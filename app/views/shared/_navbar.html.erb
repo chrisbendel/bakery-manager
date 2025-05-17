@@ -1,0 +1,14 @@
+<nav style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f8f8; border-bottom: 1px solid #ddd;">
+  <div>
+    <%= link_to "🥖 Bakery Manager", root_path, style: "font-weight: bold; text-decoration: none;" %>
+  </div>
+
+  <div>
+    <% if Current.user %>
+      <%= link_to "Log out", sign_out_path, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    <% else %>
+      <%= link_to "Sign in", sign_in_path %> |
+      <%= link_to "Sign up", sign_up_path %>
+    <% end %>
+  </div>
+</nav>
