@@ -20,4 +20,3 @@ TODO write a blurb
 ## TODOS
 - Deployment info
 - Database seeding
-s
