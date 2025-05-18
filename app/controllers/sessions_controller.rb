@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       Current.session = @session
       redirect_to root_path, notice: "Signin Successful"
     else
-      flash.now[:alert] = "That email or password is incorrect"
+      flash[:alert] = "That email or password is incorrect"
       redirect_to sign_in_url(email_hint: params[:email])
     end
   end
