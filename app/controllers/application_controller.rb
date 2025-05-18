@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
       if session_record = Session.find_by_id(cookies.signed[:session_token])
         Current.session = session_record
       else
+        # TODO Change this to default to homepage once made
         redirect_to sign_in_path
       end
     end
