@@ -18,11 +18,6 @@ class SessionsController < ApplicationController
       redirect_to root_path, notice: "Signin Successful"
     else
       flash.now[:alert] = "That email or password is incorrect"
-      render turbo_stream: turbo_stream.replace(
-        "sign_in_form",
-        partial: "sessions/form",
-        locals: { email_hint: params[:email] }
-      )
     end
   end
 

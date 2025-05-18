@@ -16,11 +16,12 @@ class RegistrationsController < ApplicationController
 
       redirect_to root_path, notice: "Welcome! You have signed up successfully"
     else
-      render turbo_stream: turbo_stream.replace(
-        "sign_up_form",
-        partial: "registrations/form",
-        locals: { user: @user }
-      )
+      flash.now[:alert] = "Something went wrong"
+      # render turbo_stream: turbo_stream.replace(
+      #   "sign_up_form",
+      #   partial: "registrations/form",
+      #   locals: { user: @user }
+      # )
     end
   end
 
