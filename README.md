@@ -1,24 +1,22 @@
-# README
+## About the project
+TODO write a blurb
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
+`bin/setup`
 
-Things you may want to cover:
+## Local Development
+`bin/dev`
 
-* Ruby version
+## Tests
+`bin/rails db:test:prepare test test:system`
 
-* System dependencies
+## Rubocop
+`bin/rubocop -a`
 
-* Configuration
+## Helpful db stuff
+`bin/rails db:reset`
+`bin/rails db:migrate`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## TODOS
+- Deployment info
+- Database seeding
