@@ -191,6 +191,9 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
+    polaris_view_components (2.4.0)
+      rails (>= 5.0.0)
+      view_component (>= 3.0.0, < 4.0.0)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -378,6 +381,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
+  polaris_view_components (~> 2.4)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)

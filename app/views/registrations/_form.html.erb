@@ -1,36 +1,47 @@
-<%= turbo_frame_tag "sign_up_form" do %>
-  <h1>Sign up</h1>
+<%= polaris_page do %>
+  <%= polaris_vertical_stack(inline_align: :center, gap: "5") do %>
 
-  <%= form_with(url: sign_up_path, method: :post, local: false) do |form| %>
-    <% if @user.errors.any? %>
-      <div style="color: red">
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <% if @user&.errors&.any? %>
+      <%= polaris_banner(
+            status: :critical,
+            title: "#{pluralize(@user.errors.count, 'error')} prohibited this user from being saved:"
+          ) do %>
         <ul>
           <% @user.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>
-      </div>
+      <% end %>
     <% end %>
 
-    <div>
-      <%= form.label :email, style: "display: block" %>
-      <%= form.email_field :email, required: true, autofocus: true, autocomplete: "email" %>
-    </div>
+    <%= form_with(model: @user, url: sign_up_path, method: :post, local: false, builder: Polaris::FormBuilder) do |form| %>      <%= polaris_vertical_stack(gap: "3") do %>
+        <%= form.polaris_text_field(
+              :email,
+              label: "Email",
+              required: true,
+              autofocus: true,
+              autocomplete: "email"
+            ) %>
 
-    <div>
-      <%= form.label :password, style: "display: block" %>
-      <%= form.password_field :password, required: true, autocomplete: "new-password" %>
-      <div>6 characters minimum.</div>
-    </div>
+        <%= form.polaris_text_field(
+              :password,
+              label: "Password",
+              type: :password,
+              required: true,
+              autocomplete: "new-password",
+              help_text: "6 characters minimum."
+            ) %>
 
-    <div>
-      <%= form.label :password_confirmation, style: "display: block" %>
-      <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
-    </div>
+        <%= form.polaris_text_field(
+              :password_confirmation,
+              label: "Confirm password",
+              type: :password,
+              required: true,
+              autocomplete: "new-password"
+            ) %>
 
-    <div>
-      <%= form.submit "Sign up" %>
-    </div>
+        <%= polaris_button(submit: true, primary: true) { "Sign up" } %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="<%= polaris_html_classes %>" style="<%= polaris_html_styles %>">
   <head>
     <title><%= content_for(:title) || "Bakery Manager" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -20,9 +20,10 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "polaris_view_components" %>
   </head>
 
-  <body>
+  <body style="<%= polaris_body_styles %>">
     <%= turbo_frame_tag "flash" do %>
       <% flash.each do |key, value| %>
         <div class="alert <%= key %>"><%= value %></div>

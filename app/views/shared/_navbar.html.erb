@@ -1,14 +1,27 @@
 <nav style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f8f8; border-bottom: 1px solid #ddd;">
   <div>
-    <%= link_to "🥖 Bakery Manager", root_path, style: "font-weight: bold; text-decoration: none;" %>
+    <%= polaris_link(url: root_path, monochrome: true, no_underline: true) do %>
+      🥖 Bakery Manager
+    <% end %>
   </div>
 
   <div>
     <% if Current.user %>
-      <%= button_to "Log out", sign_out_path, method: :delete %>
+      <%= polaris_button_to("Log out", sign_out_path,
+        method: :delete,
+        destructive: true,
+        data: {
+          confirm: "Are you sure?",
+        }
+      ) %>
+
     <% else %>
-      <%= link_to "Sign in", sign_in_path %> |
-      <%= link_to "Sign up", sign_up_path %>
+      <%= polaris_link(url: sign_in_path, monochrome: true, no_underline: true) do %>
+        Sign in
+      <% end %>
+      <%#= polaris_link(url: sign_up_path, monochrome: true, no_underline: true) do %>
+<!--        Sign up-->
+      <%# end %>
     <% end %>
   </div>
 </nav>
