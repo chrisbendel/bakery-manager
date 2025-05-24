@@ -65,3 +65,7 @@ end
 gem "view_component", "~> 3.21"
 
 gem "authentication-zero", "~> 4.0"
+
+gem "erb_lint", "~> 0.9.0"
+
+gem "better_html", "~> 2.1"
