@@ -50,7 +50,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem "erb-formatter", "~> 0.7.3"
+  gem "htmlbeautifier", "~> 1.4"
 end
 
 group :development do
@@ -68,5 +68,3 @@ end
 gem "view_component", "~> 3.21"
 
 gem "authentication-zero", "~> 4.0"
-
-gem "htmlbeautifier", "~> 1.4"
