@@ -68,3 +68,5 @@ end
 gem "view_component", "~> 3.21"
 
 gem "authentication-zero", "~> 4.0"
+
+gem "htmlbeautifier", "~> 1.4"
