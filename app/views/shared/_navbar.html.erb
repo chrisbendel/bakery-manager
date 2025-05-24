@@ -6,7 +6,6 @@
     root_path,
     style: "font-weight: bold; text-decoration: none;" %>
   </div>
-
   <div>
     <% if Current.user %>
       <%= button_to "Log out", sign_out_path, method: :delete %>

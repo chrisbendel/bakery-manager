@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require "htmlbeautifier"
+
+check_only = ARGV.include?("--check")
+bad_files = []
+
+Dir.glob("app/views/**/*.html.erb").each do |file|
+  original = File.read(file)
+  formatted = HtmlBeautifier.beautify(original)
+
+  if original != formatted
+    bad_files << file
+
+    unless check_only
+      File.write(file, formatted)
+    end
+  end
+end
+
+if check_only
+  if bad_files.any?
+    puts "❌ The following files need formatting:"
+    bad_files.each { |f| puts "  - #{f}" }
+    exit 1
+  else
+    puts "✓ All ERB views are properly formatted."
+  end
+else
+  puts "✓ Formatted #{bad_files.size} file(s)."
+end

@@ -1,5 +1,4 @@
 <h1>Sign in</h1>
-
 <%= form_with(url: sign_in_path, method: :post, local: false) do |form| %>
   <div>
     <%= form.label :email, style: "display: block" %>
@@ -9,19 +8,15 @@
                      autofocus: true,
                      autocomplete: "email" %>
   </div>
-
   <div>
     <%= form.label :password, style: "display: block" %>
     <%= form.password_field :password, required: true, autocomplete: "current-password" %>
   </div>
-
   <div>
     <%= form.submit "Sign in" %>
   </div>
 <% end %>
-
 <br>
-
 <div>
   <%= link_to "Sign up", sign_up_path, data: { turbo_frame: "_top" } %>
   |

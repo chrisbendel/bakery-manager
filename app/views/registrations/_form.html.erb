@@ -1,6 +1,5 @@
 <%= turbo_frame_tag "sign_up_form" do %>
   <h1>Sign up</h1>
-
   <%= form_with(url: sign_up_path, method: :post, local: false) do |form| %>
     <% if @user.errors.any? %>
       <div style="color: red">
@@ -13,27 +12,23 @@
         </ul>
       </div>
     <% end %>
-
     <div>
       <%= form.label :email, style: "display: block" %>
       <%= form.email_field :email, required: true, autofocus: true, autocomplete: "email" %>
     </div>
-
     <div>
       <%= form.label :password, style: "display: block" %>
       <%= form.password_field :password, required: true, autocomplete: "new-password" %>
       <div>6 characters minimum.</div>
     </div>
-
-          <div>
-            <%= form.label :password_confirmation, style: "display: block" %>
-            <%= form.password_field :password_confirmation,
+    <div>
+      <%= form.label :password_confirmation, style: "display: block" %>
+      <%= form.password_field :password_confirmation,
                                 required: true,
                                 autocomplete: "new-password" %>
-          </div>
-
-            <div>
-              <%= form.submit "Sign up" %>
-            </div>
-          <% end %>
-        <% end %>
+    </div>
+    <div>
+      <%= form.submit "Sign up" %>
+    </div>
+  <% end %>
+<% end %>
