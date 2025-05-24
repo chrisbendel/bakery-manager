@@ -55,7 +55,6 @@ jobs:
 
       - name: Check ERB formatting
         run: bin/format-views --check
-
   test:
     runs-on: ubuntu-latest
 
