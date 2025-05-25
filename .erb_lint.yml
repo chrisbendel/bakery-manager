@@ -11,7 +11,7 @@ linters:
     enabled: true
   DeprecatedClasses: # See https://github.com/Shopify/erb-lint#deprecatedclasses
     enabled: true
-  ErbSafety: # Need to fix the remaining issues before this can be enabled
+  ErbSafety:
     enabled: true
     better_html_config: .better-html.yml
   ExtraNewline:
