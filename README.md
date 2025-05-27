@@ -10,8 +10,9 @@ TODO write a blurb
 ## Tests
 `bin/rails db:test:prepare test test:system`
 
-## Rubocop
-`bin/rubocop -a`
+## Linting
+- ruby: `bin/rubocop -a`
+- erb template files: `bin/bundle exec erb_lint --lint-all -a` 
 
 ## Helpful db stuff
 `bin/rails db:reset`

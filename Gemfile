@@ -67,3 +67,5 @@ group :test do
 end
 
 gem "authentication-zero", "~> 4.0"
+
+gem "tailwindcss-rails", "~> 4.2"
