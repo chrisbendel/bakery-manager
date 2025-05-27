@@ -26,7 +26,7 @@
   </head>
 
   <body>
-    <%=   turbo_frame_tag "flash" do %>
+    <%= turbo_frame_tag "flash" do %>
       <% flash.each do |key, value| %>
         <div class="alert <%= key %>"><%= value %></div>
       <% end %>
