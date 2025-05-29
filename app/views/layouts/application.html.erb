@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html data-theme="dark" lang="en">
-  <head>
-    <title><%= content_for(:title) || "Bakery Manager" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title><%= content_for(:title) || "Bakery Manager" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= yield :head %>
+  <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+  <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+  <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="icon" href="/icon.png" type="image/png">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+  <%# Includes all stylesheet files in app/assets/stylesheets %>
+  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
 
-    <!-- TODO preload with import map one day? Ref: https://github.com/rails/importmap-rails?tab=readme-ov-file#preloading-pinned-modules -->
-    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
-  </head>
+  <!-- TODO preload with import map one day? Ref: https://github.com/rails/importmap-rails?tab=readme-ov-file#preloading-pinned-modules -->
+  <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+</head>
 
-  <body>
-    <%= turbo_frame_tag "flash" do %>
-      <% flash.each do |key, value| %>
-        <div class="alert <%= key %>"><%= value %></div>
-      <% end %>
-    <% end %>
+<body>
+<%= turbo_frame_tag "flash" do %>
+  <% flash.each do |key, value| %>
+    <div class="alert <%= key %>"><%= value %></div>
+  <% end %>
+<% end %>
 
-    <%= render "shared/navbar" %>
+<%= render "shared/navbar" %>
 
-    <%= yield %>
-  </body>
+<%= yield %>
+</body>
 </html>
