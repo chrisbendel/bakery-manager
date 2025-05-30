@@ -18,7 +18,9 @@
         </label>
 
         <% if flash[:alert] %>
-          <p class="label text-error"><%= flash[:alert] %></p>
+          <p class="label text-error">
+            <%= flash[:alert] %>
+          </p>
         <% end %>
 
         <%= form.submit "Sign in", class: 'btn btn-primary' %>

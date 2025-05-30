@@ -13,7 +13,9 @@
         </div>
 
         <% if flash[:alert] %>
-          <p class="label text-error"><%= flash[:alert] %></p>
+          <p class="label text-error">
+            <%= flash[:alert] %>
+          </p>
         <% end %>
 
         <%= form.submit "Send password reset email", class: 'btn btn-primary' %>
