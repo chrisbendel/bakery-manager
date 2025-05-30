@@ -1,34 +1,39 @@
-<h1>Sign up</h1>
+<div class="flex flex-col items-center gap-2 mt-4">
+  <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+    <legend class="fieldset-legend">Sign Up</legend>
 
-<%= form_with(url: sign_up_path, method: :post, local: false) do |form| %>
-  <% if @user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+    <%= form_with(url: sign_up_path, method: :post, local: false) do |form| %>
+      <div class="flex flex-col gap-4">
+        <div>
+          <label class="input validator">
+            <%= icon "envelope" %>
+            <%= form.email_field :email, value: @email_hint, required: true, autofocus: true, placeholder: "your@email.com" %>
+          </label>
+          <div class="validator-hint hidden">Enter a valid email address</div>
+        </div>
+
+        <label class="input validator">
+          <%= icon "key" %>
+          <%= form.password_field :password, required: true, placeholder: 'Password', autocomplete: "new-password" %>
+        </label>
+
+        <label class="input validator">
+          <%= icon "key" %>
+          <%= form.password_field :password_confirmation, required: true, placeholder: 'Confirm password', autocomplete: "new-password" %>
+        </label>
+
+        <% if flash[:alert] %>
+          <p class="label text-error"><%= flash[:alert] %></p>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, required: true, autofocus: true, autocomplete: "email" %>
-  </div>
+        <%= form.submit "Sign up", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password, required: true, autocomplete: "new-password" %>
-    <div>6 characters minimum.</div>
-  </div>
+    <p class="label">
+      <%= link_to "Have an account already? Sign in", sign_in_path %>
+    </p>
+  </fieldset>
 
-  <div>
-    <%= form.label :password_confirmation, style: "display: block" %>
-    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
-  </div>
 
-  <div>
-    <%= form.submit "Sign up" %>
-  </div>
-<% end %>
+</div>

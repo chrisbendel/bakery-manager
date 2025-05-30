@@ -1,14 +1,25 @@
-<p style="color: red"><%= alert %></p>
+<div class="flex flex-col items-center gap-2 mt-4">
+  <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+    <legend class="fieldset-legend">Forgot your password?</legend>
 
-<h1>Forgot your password?</h1>
+    <%= form_with(url: identity_password_reset_path) do |form| %>
+      <div class="flex flex-col gap-4">
+        <div>
+          <label class="input validator">
+            <%= icon "envelope" %>
+            <%= form.email_field :email, required: true, autofocus: true, placeholder: "your@email.com" %>
+          </label>
+          <div class="validator-hint hidden">Enter a valid email address</div>
+        </div>
 
-<%= form_with(url: identity_password_reset_path) do |form| %>
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, required: true, autofocus: true %>
-  </div>
+        <% if flash[:alert] %>
+          <p class="label text-error">
+            <%= flash[:alert] %>
+          </p>
+        <% end %>
 
-  <div>
-    <%= form.submit "Send password reset email" %>
-  </div>
-<% end %>
+        <%= form.submit "Send password reset email", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </fieldset>
+</div>
