@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="dark" lang="en">
+<html data-theme="dim" lang="en">
 <head>
   <title><%= content_for(:title) || "Bakery Manager" %></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -22,7 +22,8 @@
   <%= javascript_importmap_tags %>
 
   <!-- TODO preload with import map one day? Ref: https://github.com/rails/importmap-rails?tab=readme-ov-file#preloading-pinned-modules -->
-  <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+  <!-- TODO if we want a theme switcher-->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>-->
 </head>
 
 <body>
@@ -34,6 +35,9 @@
 
 <%= render "shared/navbar" %>
 
-<%= yield %>
+<main class="flex flex-col items-center">
+  <%= yield %>
+</main>
+
 </body>
 </html>

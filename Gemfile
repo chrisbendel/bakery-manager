@@ -67,3 +67,5 @@ gem "authentication-zero", "~> 4.0"
 gem "tailwindcss-rails", "~> 4.2"
 
 gem "tailwindcss-ruby", "~> 4.1"
+
+gem "rails_icons", "~> 1.3"

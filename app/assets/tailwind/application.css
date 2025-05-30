@@ -5,8 +5,6 @@
 @source "../../../app/javascript/**/*.js";
 @source "../../../app/views/**/*";
 
-@plugin "./daisyui.js";
-
-@plugin "./daisyui-theme.js" {
-    themes: light --default, dark --prefersdark;
+@plugin "./daisyui.js" {
+    themes: dim --default --prefersdark, wireframe;
 }
