@@ -13,6 +13,8 @@ TODO write a blurb
 ## Tests
 
 `bin/rails db:test:prepare test test:system`
+or simply
+`bin/rails test`
 
 ## Linting
 
