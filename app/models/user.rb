@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :bakery_memberships
+  has_many :bakeries, through: :bakery_memberships
+
   generates_token_for :email_verification, expires_in: 2.days do
     email
   end
