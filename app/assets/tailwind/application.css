@@ -6,5 +6,5 @@
 @source "../../../app/views/**/*";
 
 @plugin "./daisyui.js" {
-    themes: dim --default --prefersdark, wireframe;
+    themes: dim --prefersdark, wireframe --default;
 }

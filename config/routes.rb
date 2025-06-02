@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   post "sign_up", to: "registrations#create"
   delete "sign_out", to: "sessions#destroy", as: :sign_out
 
-  resources :sessions, only: [:show, :destroy]
   resource :password, only: [:edit, :update]
   namespace :identity do
     resource :email, only: [:edit, :update]
@@ -15,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :bakeries, only: [:new, :create, :show, :index, :edit, :update]
   get '/my_bakery', to: 'bakeries#my_bakery', as: :my_bakery
-  
+
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

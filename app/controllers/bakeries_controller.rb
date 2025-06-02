@@ -1,5 +1,5 @@
 class BakeriesController < ApplicationController
-  before_action :authenticate, only: [:new, :create, :edit, :update, :my_bakery]
+  before_action :authenticate, except: [:index]
   before_action :set_bakery, only: [:show, :edit, :update]
 
   def index
