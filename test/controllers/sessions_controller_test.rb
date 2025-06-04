@@ -23,7 +23,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Invalid email or password", flash[:alert]
     assert_response :unprocessable_entity
 
-    assert_select 'input[value=?]', @user.email
+    assert_select "input[value=?]", @user.email
   end
 
   test "should sign out" do
