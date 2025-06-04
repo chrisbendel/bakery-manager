@@ -1,13 +1,13 @@
 class BakeriesController < ApplicationController
   before_action :authenticate, except: [ :index, :show ]
   before_action :set_bakery, only: [ :show, :edit, :update ]
+  before_action :ensure_owner, only: [ :edit, :update ] # Add this line
 
   def index
     @bakeries = Bakery.all
   end
 
   def show
-    @bakery = Bakery.find(params[:id])
   end
 
   def new
@@ -46,6 +46,12 @@ class BakeriesController < ApplicationController
   end
 
   private
+
+  def ensure_owner
+    unless @bakery.bakery_memberships.owner.exists?(user: current_user)
+      redirect_to @bakery, alert: "Only bakery owners can perform this action"
+    end
+  end
 
   def bakery_params
     params.require(:bakery).permit(:name, :description)
