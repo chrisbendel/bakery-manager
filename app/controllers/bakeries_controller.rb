@@ -1,6 +1,6 @@
 class BakeriesController < ApplicationController
-  before_action :authenticate, except: [ :index ]
-  before_action :set_bakery, only: [ :show, :edit, :update ]
+  before_action :authenticate, except: [:index, :show]
+  before_action :set_bakery, only: [:show, :edit, :update]
 
   def index
     @bakeries = Bakery.all
