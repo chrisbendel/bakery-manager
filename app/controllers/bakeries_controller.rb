@@ -1,7 +1,7 @@
 class BakeriesController < ApplicationController
-  before_action :authenticate, except: [ :index, :show ]
-  before_action :set_bakery, only: [ :show, :edit, :update ]
-  before_action :ensure_owner, only: [ :edit, :update ] # Add this line
+  before_action :require_user, except: [:index, :show]
+  before_action :set_bakery, only: [:show, :edit, :update]
+  before_action :ensure_owner, only: [:edit, :update]
 
   def index
     @bakeries = Bakery.all
