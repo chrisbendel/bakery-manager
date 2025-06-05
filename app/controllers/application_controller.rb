@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :set_current_session
   # TODO require user on everything, and explicitly skip for public routes?
   #  OR explicitly require on bakery owner/admin routes separately
+  #  EG. instead of :require_user on bakeries & admin routes, can do :ensure_owner
+  #  and admin route: :ensure_admin
   before_action :require_user
 
   helper_method :current_user
