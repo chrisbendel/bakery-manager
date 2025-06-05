@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate, only: %i[ new create ]
+  skip_before_action :require_user, only: %i[ new create ]
 
   def new
   end
@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     Current.session&.destroy
+    cookies.delete(:session_token, signed: true)
     redirect_to root_path
   end
 end

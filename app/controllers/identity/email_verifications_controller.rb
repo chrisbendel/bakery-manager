@@ -1,5 +1,5 @@
 class Identity::EmailVerificationsController < ApplicationController
-  skip_before_action :authenticate, only: :show
+  skip_before_action :require_user, only: :show
 
   before_action :set_user, only: :show
 
@@ -14,13 +14,14 @@ class Identity::EmailVerificationsController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find_by_token_for!(:email_verification, params[:sid])
-    rescue StandardError
-      redirect_to edit_identity_email_path, alert: "That email verification link is invalid"
-    end
 
-    def send_email_verification
-      UserMailer.with(user: Current.user).email_verification.deliver_later
-    end
+  def set_user
+    @user = User.find_by_token_for!(:email_verification, params[:sid])
+  rescue StandardError
+    redirect_to edit_identity_email_path, alert: "That email verification link is invalid"
+  end
+
+  def send_email_verification
+    UserMailer.with(user: Current.user).email_verification.deliver_later
+  end
 end

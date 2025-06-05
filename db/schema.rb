@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_16_190954) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_31_150143) do
+  create_table "bakeries", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bakery_memberships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "bakery_id", null: false
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bakery_id"], name: "index_bakery_memberships_on_bakery_id"
+    t.index ["user_id"], name: "index_bakery_memberships_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_agent"
@@ -29,5 +46,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_190954) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "bakery_memberships", "bakeries"
+  add_foreign_key "bakery_memberships", "users"
   add_foreign_key "sessions", "users"
 end

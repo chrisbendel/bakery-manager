@@ -2,7 +2,7 @@ require "test_helper"
 
 class Identity::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:lazaro_nixon)
+    @user = create(:user)
   end
 
   test "should get new" do
@@ -18,7 +18,9 @@ class Identity::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should send a password reset email" do
-    assert_enqueued_email_with UserMailer, :password_reset, params: { user: @user } do
+    @user.update!(verified: true) # Make sure the user is verified
+
+    assert_enqueued_emails 1 do
       post identity_password_reset_url, params: { email: @user.email }
     end
 

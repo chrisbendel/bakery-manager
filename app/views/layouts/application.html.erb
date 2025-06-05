@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="dim" lang="en">
+<html data-theme="wireframe" lang="en">
 <head>
   <title><%= content_for(:title) || "Bakery Manager" %></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -30,7 +30,7 @@
 
 <%= render "shared/navbar" %>
 
-<main class="flex flex-col items-center">
+<main class="flex flex-col items-center my-[2rem]">
   <%= yield %>
 </main>
 
