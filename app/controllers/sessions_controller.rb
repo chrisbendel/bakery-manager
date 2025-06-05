@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     Current.session&.destroy
-    cookies.delete(:session_token)
+    cookies.delete(:session_token, signed: true)
     redirect_to root_path
   end
 end
