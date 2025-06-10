@@ -1,7 +1,7 @@
 class BakeriesController < ApplicationController
-  before_action :require_user, except: [ :index, :show ]
-  before_action :set_bakery, only: [ :show, :edit, :update ]
-  before_action :ensure_owner, only: [ :edit, :update ]
+  before_action :require_user, except: [:index, :show]
+  before_action :set_bakery, only: [:show, :edit, :update]
+  before_action :ensure_owner, only: [:edit, :update]
 
   def index
     @bakeries = Bakery.all
@@ -54,7 +54,7 @@ class BakeriesController < ApplicationController
   end
 
   def bakery_params
-    params.require(:bakery).permit(:name, :description)
+    params.require(:bakery).permit(:name, :description, :image)
   end
 
   def set_bakery

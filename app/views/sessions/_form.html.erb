@@ -1,35 +1,28 @@
-<div class="flex flex-col items-center gap-2 mt-4">
-  <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-    <legend class="fieldset-legend">Login</legend>
+<%= form_with(url: sign_in_path, method: :post, local: false) do |form| %>
+  <%= render layout: "shared/fieldset_component", locals: { title: "Login" } do %>
 
-    <%= form_with(url: sign_in_path, method: :post, local: false) do |form| %>
-      <div class="flex flex-col gap-4">
-        <div>
-          <label class="input validator">
-            <%= icon "envelope" %>
-            <%= form.email_field :email, value: @email_hint, required: true, autofocus: true, placeholder: "your@email.com" %>
-          </label>
-          <div class="validator-hint hidden">Enter a valid email address</div>
-        </div>
-
-        <label class="input validator">
-          <%= icon "key" %>
-          <%= form.password_field :password, required: true, placeholder: 'Password', autocomplete: "new-password" %>
-        </label>
-
-        <% if flash[:alert] %>
-          <p class="label text-error">
-            <%= flash[:alert] %>
-          </p>
-        <% end %>
-
-        <%= form.submit "Sign in", class: 'btn btn-primary' %>
-      </div>
+    <%= form.label :email, "Email", class: "input validator" do %>
+      <%= icon "envelope" %>
+      <%= form.email_field :email, value: @email_hint, required: true, autofocus: true, placeholder: "your@email.com" %>
     <% end %>
+    <div class="validator-hint hidden">Enter a valid email address</div>
+
+    <%= form.label :password, "Password", class: 'input' do %>
+      <%= icon "key" %>
+      <%= form.password_field :password, required: true, placeholder: 'Password', autocomplete: "new-password" %>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <p class="label text-error">
+        <%= flash[:alert] %>
+      </p>
+    <% end %>
+
+    <%= form.submit "Sign in", class: 'btn btn-primary' %>
 
     <p class="label">
       <%= link_to "Sign up", sign_up_path %> |
       <%= link_to "Forgot your password?", new_identity_password_reset_path %>
     </p>
-  </fieldset>
-</div>
+  <% end %>
+<% end %>

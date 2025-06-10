@@ -1,37 +1,25 @@
-<div class="flex flex-col items-center gap-2 mt-4">
-  <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-    <legend class="fieldset-legend">Sign Up</legend>
-
-    <%= form_with(url: sign_up_path, method: :post, local: false) do |form| %>
-      <div class="flex flex-col gap-4">
-        <div>
-          <label class="input validator">
-            <%= icon "envelope" %>
-            <%= form.email_field :email, value: @email_hint, required: true, autofocus: true, placeholder: "your@email.com" %>
-          </label>
-          <div class="validator-hint hidden">Enter a valid email address</div>
-        </div>
-
-        <label class="input validator">
-          <%= icon "key" %>
-          <%= form.password_field :password, required: true, placeholder: 'Password', autocomplete: "new-password" %>
-        </label>
-
-        <label class="input validator">
-          <%= icon "key" %>
-          <%= form.password_field :password_confirmation, required: true, placeholder: 'Confirm password', autocomplete: "new-password" %>
-        </label>
-
-        <% if flash[:alert] %>
-          <p class="label text-error"><%= flash[:alert] %></p>
-        <% end %>
-
-        <%= form.submit "Sign up", class: 'btn btn-primary' %>
-      </div>
+<%= form_with(url: sign_up_path, method: :post, local: false) do |form| %>
+  <%= render layout: "shared/fieldset_component", locals: { title: "Sign Up" } do %>
+    <%= form.label :email, "Email", class: "input validator" do %>
+      <%= icon "envelope" %>
+      <%= form.email_field :email, value: @email_hint, required: true, autofocus: true, placeholder: "your@email.com" %>
     <% end %>
+    <div class="validator-hint hidden">Enter a valid email address</div>
+
+    <%= form.label :password, "Password", class: 'input' do %>
+      <%= icon "key" %>
+      <%= form.password_field :password, required: true, placeholder: 'Password', autocomplete: "new-password" %>
+    <% end %>
+
+    <%= form.label :password_confirmation, "Password Confirmation", class: 'input' do %>
+      <%= icon "key" %>
+      <%= form.password_field :password_confirmation, required: true, placeholder: 'Confirm Password', autocomplete: "new-password" %>
+    <% end %>
+
+    <%= form.submit "Sign up", class: 'btn btn-primary' %>
 
     <p class="label">
       <%= link_to "Have an account already? Sign in", sign_in_path %>
     </p>
-  </fieldset>
-</div>
+  <% end %>
+<% end %>

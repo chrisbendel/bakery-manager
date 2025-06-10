@@ -73,3 +73,7 @@ gem "tailwindcss-rails", "~> 4.2"
 gem "tailwindcss-ruby", "~> 4.1"
 
 gem "rails_icons", "~> 1.3"
+
+gem "image_processing", "~> 1.14"
+
+gem "ruby-vips", "~> 2.2"
