@@ -6,6 +6,12 @@
     <%= form.label :description, "Description", class: 'label' %>
     <%= form.text_area :description, placeholder: "Bakery Description", class: 'textarea' %>
 
+
+    <% if bakery.image.attached? %>
+      <p class="text-sm">Current image:</p>
+      <%= image_tag bakery.image.variant(resize_to_limit: [300, 200]), class: "rounded" %>
+    <% end %>
+
     <%= form.label :image, "Image" %>
     <%= form.file_field :image, direct_upload: true, class: "file-input", accept: "image/*" %>
 
