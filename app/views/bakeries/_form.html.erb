@@ -4,12 +4,11 @@
     <%= form.text_field :name, placeholder: "Bakery Name", class: 'input' %>
 
     <%= form.label :description, "Description", class: 'label' %>
-    <%= form.text_area :description, placeholder: "Bakery Description", class: 'input' %>
+    <%= form.text_area :description, placeholder: "Bakery Description", class: 'textarea' %>
 
     <%= form.label :image, "Image" %>
-    <%= form.file_field :image, direct_upload: true, class: "file-input" %>
+    <%= form.file_field :image, direct_upload: true, class: "file-input", accept: "image/*" %>
 
     <%= form.submit bakery.persisted? ? "Update Bakery" : "Create Bakery", class: "btn btn-primary" %>
   <% end %>
 <% end %>
-

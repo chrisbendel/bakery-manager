@@ -6,7 +6,7 @@
         <h2 class="font-semibold text-xl"><%= bakery.name %></h2>
         <p><%= bakery.description %></p>
         <% if bakery.image.attached? %>
-          <%= image_tag bakery.image.variant(resize_to_limit: [600, 400]) %>
+          <%= image_tag bakery.image.variant(resize_to_limit: [600, 400]), alt: bakery.name %>
         <% end %>
       </li>
     <% end %>
