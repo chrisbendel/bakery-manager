@@ -1,10 +1,10 @@
 class BakeriesController < ApplicationController
-  before_action :require_user, except: [ :index, :show ]
-  before_action :set_bakery, only: [ :show, :edit, :update ]
-  before_action :ensure_owner, only: [ :edit, :update ]
+  before_action :require_user, except: [:index, :show]
+  before_action :set_bakery, only: [:show, :edit, :update]
+  before_action :ensure_owner, only: [:edit, :update]
 
   def index
-    @bakeries = Bakery.all
+    @bakeries = Bakery.all.with_attached_image
   end
 
   def show
