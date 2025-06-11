@@ -5,6 +5,8 @@ TODO write a blurb
 ## Setup
 
 `bin/setup`
+Image processing needs [libvips](https://github.com/libvips/libvips)
+`brew install libvips`
 
 ## Local Development
 
@@ -18,8 +20,7 @@ or simply
 
 ## Linting
 
-- ruby: `bin/rubocop -a`
-- TODO standardize with https://shopify.github.io/ruby-lsp/
+- Using standardrb `standardrb --fix`
 
 ## Helpful db stuff
 

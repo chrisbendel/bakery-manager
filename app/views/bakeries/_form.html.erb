@@ -1,15 +1,20 @@
 <%= form_with model: bakery, local: true do |form| %>
-  <div class="form-control">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "input input-bordered" %>
-  </div>
+  <%= render layout: "shared/fieldset_component", locals: { title: "Manage Bakery Details" } do %>
+    <%= form.label :name, "Name", class: 'label' %>
+    <%= form.text_field :name, placeholder: "Bakery Name", class: 'input' %>
 
-  <div class="form-control mt-4">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: "textarea textarea-bordered" %>
-  </div>
+    <%= form.label :description, "Description", class: 'label' %>
+    <%= form.text_area :description, placeholder: "Bakery Description", class: 'textarea' %>
 
-  <div class="mt-6">
+
+    <% if bakery.image.attached? %>
+      <p class="text-sm">Current image:</p>
+      <%= image_tag bakery.image.variant(resize_to_limit: [300, 200]), class: "rounded" %>
+    <% end %>
+
+    <%= form.label :image, "Image" %>
+    <%= form.file_field :image, direct_upload: true, class: "file-input", accept: "image/*" %>
+
     <%= form.submit bakery.persisted? ? "Update Bakery" : "Create Bakery", class: "btn btn-primary" %>
-  </div>
+  <% end %>
 <% end %>

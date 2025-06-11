@@ -26,6 +26,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install libvips
+        run: sudo apt-get update && sudo apt-get install -y libvips
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -51,7 +54,7 @@ jobs:
           bundler-cache: true
 
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: bin/bundle exec standardrb --fix
 
   test:
     runs-on: ubuntu-latest
@@ -65,6 +68,9 @@ jobs:
     steps:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libyaml-dev pkg-config google-chrome-stable
+
+      - name: Install libvips
+        run: sudo apt-get update && sudo apt-get install -y libvips
 
       - name: Checkout code
         uses: actions/checkout@v4

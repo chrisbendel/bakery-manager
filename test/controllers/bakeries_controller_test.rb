@@ -12,7 +12,7 @@ class BakeriesControllerTest < ActionDispatch::IntegrationTest
     get new_bakery_url
     assert_redirected_to sign_in_url
 
-    post bakeries_url, params: { bakery: { name: Faker::Restaurant.name, description: Faker::Restaurant.description } }
+    post bakeries_url, params: {bakery: {name: Faker::Restaurant.name, description: Faker::Restaurant.description}}
     assert_redirected_to sign_in_url
   end
 
@@ -56,7 +56,7 @@ class BakeriesControllerTest < ActionDispatch::IntegrationTest
   test "should allow owner to update bakery" do
     sign_in_as(@user)
     patch bakery_url(@bakery), params: {
-      bakery: { name: "New Name", description: "New description" }
+      bakery: {name: "New Name", description: "New description"}
     }
     assert_redirected_to bakery_url(@bakery)
     assert_equal "Bakery updated!", flash[:notice]
@@ -72,7 +72,7 @@ class BakeriesControllerTest < ActionDispatch::IntegrationTest
   test "should not allow non-owner to update bakery" do
     sign_in_as(@other_user)
     patch bakery_url(@bakery), params: {
-      bakery: { name: "New Name", description: "New description" }
+      bakery: {name: "New Name", description: "New description"}
     }
     assert_redirected_to bakery_url(@bakery)
     assert_equal "Only bakery owners can perform this action", flash[:alert]
