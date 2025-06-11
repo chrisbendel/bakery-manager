@@ -8,9 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-require 'factory_bot_rails'
+require "factory_bot_rails"
 include FactoryBot::Syntax::Methods
-require 'faker'
+require "faker"
 
 puts "🌱 Seeding data..."
 

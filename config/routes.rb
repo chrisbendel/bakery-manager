@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   post "sign_up", to: "registrations#create"
   delete "sign_out", to: "sessions#destroy", as: :sign_out
 
-  resource :password, only: [ :edit, :update ]
+  resource :password, only: [:edit, :update]
   namespace :identity do
-    resource :email, only: [ :edit, :update ]
-    resource :email_verification, only: [ :show, :create ]
-    resource :password_reset, only: [ :new, :edit, :create, :update ]
+    resource :email, only: [:edit, :update]
+    resource :email_verification, only: [:show, :create]
+    resource :password_reset, only: [:new, :edit, :create, :update]
   end
 
-  resources :bakeries, only: [ :new, :create, :show, :index, :edit, :update ]
+  resources :bakeries, only: [:new, :create, :show, :index, :edit, :update]
   get "/my_bakery", to: "bakeries#my_bakery", as: :my_bakery
 
   root "home#index"
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get "up" => "rails/health#show", :as => :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

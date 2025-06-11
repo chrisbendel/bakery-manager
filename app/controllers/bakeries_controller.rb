@@ -38,11 +38,7 @@ class BakeriesController < ApplicationController
 
   def my_bakery
     @bakery = current_user.bakeries.first
-    if @bakery
-      redirect_to @bakery
-    else
-      redirect_to new_bakery_path
-    end
+    redirect_to @bakery || new_bakery_path
   end
 
   private

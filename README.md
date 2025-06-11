@@ -20,8 +20,7 @@ or simply
 
 ## Linting
 
-- ruby: `bin/rubocop -a`
-- TODO standardize with https://shopify.github.io/ruby-lsp/
+- Using standardrb `standardrb --fix`
 
 ## Helpful db stuff
 
