@@ -74,7 +74,7 @@ jobs:
 
     env:
       RAILS_ENV: test
-      DATABASE_URL: postgres://postgres:password@localhost:5432/test
+      DATABASE_URL: postgres://postgres:password@localhost:5432/bakery_manager_test
     # services:
     #  redis:
     #    image: redis

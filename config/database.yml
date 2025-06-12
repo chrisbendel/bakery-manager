@@ -1,28 +1,16 @@
-# PostgreSQL. Versions 9.3 and up are supported.
-#
-# Install the pg driver:
-#   gem install pg
-# On macOS with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-# On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
-#
-# Configure Using Gemfile
-# gem "pg"
-#
 default: &default
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
+  username: <%= ENV.fetch("POSTGRES_USER", "postgres") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "") %>
+  host: <%= ENV.fetch("POSTGRES_HOST", "localhost") %>
 
 development:
   <<: *default
-  database: bakery_manager_development
+  database: <%= ENV["POSTGRES_DB"] || "bakery_manager_development" %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -82,8 +70,6 @@ production:
   primary: &primary_production
     <<: *default
     database: bakery_manager_production
-    username: bakery_manager
-    password: <%= ENV["BAKERY_MANAGER_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: bakery_manager_production_cache
